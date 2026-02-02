@@ -8,7 +8,7 @@ pipeline {
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr.Jenkins', description: 'hi jenkins')
         text(name: 'biodata', defaultValue: '', description: 'enter info')
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Toggle this value')
         choice(name: 'CHOICE', choices: ['one', 'Two', 'three'], description: 'pick something')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
@@ -43,13 +43,17 @@ pipeline {
             }
         }
         stage('Deploy') {
-            input {
-                message "continue?"
-                ok "yes"
-                submitter "medha"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr.Jenkins', description: 'who should i say')
-                }
+            // input {
+            //     message "continue?"
+            //     ok "yes"
+            //     submitter "medha"
+            //     parameters {
+            //         string(name: 'PERSON', defaultValue: 'Mr.Jenkins', description: 'who should i say')
+            //     }
+            // }
+            when {
+                expression { "$params.DEPLOY" == true }
+
             }
             steps{
                 echo "Depying"
