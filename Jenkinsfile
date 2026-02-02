@@ -40,6 +40,9 @@ pipeline {
             echo "I will always say Hello"
             cleanWs()
         }
+        aborted {
+            echo "pipeline is aborted"
+        }
         success {
             echo "success"
        }
