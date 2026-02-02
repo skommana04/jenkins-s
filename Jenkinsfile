@@ -5,6 +5,13 @@ pipeline {
         }
 
     }
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr.Jenkins', description: 'hi jenkins')
+        text(name: 'biodata', defaultValue: '', description: 'enter info')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'CHOICE', choices: ['one', 'Two', 'three'], description: 'pick something')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    }
     options {
         timeout(time: 10, unit: 'MINUTES')
         disableConcurrentBuilds()
@@ -19,7 +26,7 @@ pipeline {
                 sh """
                 echo "Building"
                 echo $COURSE
-                sleep 20
+                #sleep 20
                 env
                 """
             }
