@@ -28,6 +28,11 @@ pipeline {
                 echo $COURSE
                 #sleep 20
                 env
+                echo "Hello ${params.PERSON}"
+                echo "Hello ${params.biodata}"
+                echo "Hello ${params.TOGGLE}"
+                echo "Hello ${params.CHOICE}"
+                echo "Hello ${params.PASSWORD}"
                 """
             }
         }
