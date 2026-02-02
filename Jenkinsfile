@@ -24,4 +24,16 @@ pipeline {
         }
 
     }
+    post {
+        always {
+            echo "I will always say Hello"
+            cleanWs()
+        }
+        success {
+            echo "success"
+       }
+       failure {
+        echo "failure"
+       }
+    }
 }
