@@ -20,6 +20,7 @@ pipeline {
         COURSE = "Jenkins"
     }
 
+
     stages {
         stage ('Build') {
             steps {
@@ -42,6 +43,14 @@ pipeline {
             }
         }
         stage('Deploy') {
+            input {
+                message "continue?"
+                ok "yes"
+                submitter "medha"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr.Jenkins', description: 'who should i say')
+                }
+            }
             steps{
                 echo "Depying"
             }
